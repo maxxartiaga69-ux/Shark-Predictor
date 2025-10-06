@@ -1,59 +1,43 @@
 # Shark Predictor 🦈
 
-### For Safe, Data-Driven Human-Marine Coexistence
+### A Data-Driven Analysis of Shark Habitats using Simulated Oceanographic Data
 *A project for the NASA International Space Apps Challenge 2025.*
 
 ---
 
-## The Problem
-Human-shark interactions are increasing, posing risks to both public safety and marine ecosystems. Coastal communities, scientists, and conservationists lack accessible, real-time tools to understand and predict where sharks are likely to be, making it difficult to implement proactive safety and conservation strategies.
-
 ## Our Solution
-Shark Predictor is a data-driven application that uses a machine learning model to predict the probability of shark presence. Our model is built on a fundamental ecological premise: sharks, as apex predators, are found where their prey is abundant. Prey abundance is dictated by specific oceanographic conditions that we can measure from space, turning the ocean into an open book.
+Shark Predictor is a Python-based analytical tool, presented in a Jupyter Notebook, that models and predicts the probability of shark presence. Our model is built on a fundamental ecological premise: sharks, as apex predators, are found where their prey is abundant. This project simulates key oceanographic conditions based on real-world principles to test and validate this prediction logic.
+
+## How to Use This Project
+This project is designed to be run cell by cell within a Jupyter Notebook environment.
+
+1.  **Clone the Repository:** Get a local copy of this project.
+2.  **Install Dependencies:** Run `pip install -r requirements.txt` in your terminal.
+3.  **Open the Notebook:** Launch Jupyter and open the `shark-notebook-fixed.ipynb` file.
+4.  **Configure Locations:** In the second code cell, you can modify the `locations_to_analyze` list to test any coordinates you wish.
+5.  **Run the Analysis:** Execute the cells sequentially to see the data simulation and validity checks for your chosen locations.
 
 ---
 
 ## The Science Behind Shark Predictor
-Our model integrates three key pillars of NASA data to create a dynamic probability map.
+Our model integrates key pillars of oceanographic data to create a dynamic probability map.
 
-### 🌿 Phytoplankton: The Ocean's Green Heart
-**Why it Matters:** Phytoplankton forms the base of the entire marine food web. High concentrations attract zooplankton, which attract small fish, which in turn attract the larger predators—sharks. A map of phytoplankton is essentially a map of potential feeding grounds.
-**NASA Data Used:** We use data from the MODIS sensor on NASA's Aqua and Terra satellites to measure Chlorophyll-a concentration, a direct indicator of phytoplankton presence.
-
-### 🔥 Sea Surface Temperature (SST): The Predator's Comfort Zone
-**Why it Matters:** Each shark species has an ideal temperature range. More importantly, thermal fronts—where cold and warm water masses meet—are highly productive hunting zones. These fronts act as natural barriers, concentrating nutrients and prey. As demonstrated by Queiroz et al. (2016) in PNAS, sharks actively select habitats characterized by strong thermal gradients.
-**NASA Data Used:** Sensors like MODIS and VIIRS provide daily global SST maps, allowing our model to identify both thermal comfort zones and these critical thermal fronts.
-
-### 💨 Ocean Dynamics: The Engine of Marine Life
-**Why it Matters:** Winds, currents, and eddies determine where nutrients and plankton are transported. Wind is the primary driver of upwelling, a phenomenon where cold, nutrient-rich deep water rises to the surface, causing an explosion of phytoplankton and fueling the entire food chain.
-**NASA Data Used:** We utilize datasets like the "MetOp-A ASCAT Level 2 Ocean Surface Wind Vectors" to get the speed and direction of ocean winds. Analyzing these vectors allows us to predict the occurrence of upwelling.
-
-### 🔗 The Final Synthesis: Connecting the Dots
-Our model integrates these pillars to understand the *why* behind a prediction:
-
-    Winds (ASCAT) ➡️ predict Upwelling
-    Upwelling ➡️ brings Nutrients to the surface
-    Nutrients + Sunlight ➡️ trigger Phytoplankton blooms (Chlorophyll-a / MODIS)
-    Phytoplankton ➡️ attracts the Food Chain (zooplankton, fish)
-    Thermal Fronts (SST / MODIS & VIIRS) ➡️ concentrate the Prey
-    Concentrated Prey + Thermal Comfort Zones ➡️ Attract Sharks 🦈🎯
+- **Phytoplankton & Chlorophyll:** We simulate chlorophyll-a concentration (the base of the marine food web) using data from NASA's MODIS sensor as a scientific basis. High chlorophyll suggests abundant food sources.
+- **Sea Surface Temperature (SST):** Sharks prefer specific temperature ranges. Our model is based on data from sensors like MODIS and VIIRS, identifying thermal comfort zones and critical thermal fronts where prey congregates.
+- **Ocean Dynamics:** Using principles from datasets like ASCAT Wind Vectors, our simulation accounts for ocean currents and their strength, which are crucial for nutrient transport and prey movement.
 
 ---
 
-### Key Technologies
-- **Analysis & Modeling:** Python (Pandas, Matplotlib, NumPy, xarray)
-- **Environment Management:** MiniConda
+### Technology Stack
+- **Analysis & Modeling:** Python (Pandas, Matplotlib, NumPy)
+- **Environment Management:** MiniConda / venv
 - **Prototyping:** Jupyter Notebook
 - **AI Assistants:** Google Gemini, Manus AI, Claude AI, ChatGPT
 
-### Data Sources
-- **NASA Earthdata:** MODIS, VIIRS, ASCAT
-- **Copernicus Marine Service:** (for parameters like depth/physics)
-- **Hycom:** (for ocean current modeling)
-- **CSIRO:** (for additional marine data)
-
 ### Next Steps & Future Improvements
-The current prototype focuses its predictive power on marine environments. A key next step for development is implementing a land mask (geospatial filter) to automatically handle and reject terrestrial coordinates, further refining the user input process.
+This notebook serves as the foundational logic for the Shark Predictor system. The current version uses a sophisticated simulation of ocean data. The next steps are:
+- **Integrate Live APIs:** Replace the simulation functions with real-time API calls to NASA Earthdata and Copernicus to fetch live oceanographic data.
+- **Implement the Full ML Model:** Add the complete machine learning predictor class to translate the simulated data into a final probability score.
 
 ### Our Team
 - Rafael Silva Nascimento
